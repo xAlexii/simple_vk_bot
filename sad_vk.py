@@ -13,7 +13,7 @@ def send_message(user_id, message):
               )
 WHAT = """what?
     supported commands:
-        hello
+    hello
             game
 кот
 """
