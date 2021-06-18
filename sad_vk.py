@@ -1,6 +1,7 @@
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
-key = "09c669d9e4b4b25bd5dffd1a5ccf3c5793d408fa87ae5df04ecb3e8244f1c179a8a38c6345b3869a7969f"
+from random import randint
+key = "f83ed97a23ab7ddf549c25455088dd6e67edb1abd39c7d360c493c5976406e97f417494ee2e0fdd21c282"
 # Авторизуемся как сообщество
 vk = vk_api.VkApi(token=key)
 
@@ -17,9 +18,11 @@ WHAT = """what?
             game
 кот
 """
-dev_id = 76904317
-send_message(dev_id,' hi i am alive')
+dev_id = 410855977
+send_message(dev_id,' OUR CASTLE IS WELLAND RICH')
 debug = False
+game_mode = False
+gamers = {}
 # Работа с сообщениями
 longpoll = VkLongPoll(vk)
 # Основной цикл
@@ -43,7 +46,19 @@ for event in longpoll.listen():
             if text == "hello":
                 send_message(user_id, "Hi")
             elif text == "game":
-                send_message(user_id, "There is no game yet\n"+WHAT)
+                game_mod = True
+                chilso = randint(1,100)
+                gamers[user_id] = chislo
+                send_message(user_id, "lets go")
+            elif user_id in gamers:
+                chislo = gamers[user_id]
+                x = int(text)
+                if chislo < x:
+                    send_message(user_id, "моё число меньше")
+                elif chislo > x:
+                    send_message(user_id, "моё число больше")
+                elif chislo == x:
+                    send_message(user_id, "you won")
             elif "кот" in text:
                 send_message(user_id, "мяу")
             else:
